@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+	</body>
+	</!DOCTYPE html>
+	<html>
+	<head>
+		<title>ANGULARJS</title>
+		<script type="text/javascript" src="js/angular.js"></script>
+		<script type="text/javascript" src="js/list.js"></script>
+	</head>
+	<body>
+	 <script>
+            var ma = angular.module("app", []);
+            ma.controller("ctrl", function ($scope) {
+                  var technology =[
+                        {name : "C#" , likes: 0, dislikes :0},
+                        {name : "JAVA" , likes: 0, dislikes :0},
+                        {name : "Phython" , likes: 0, dislikes :0},
+                        {name : "AngularJS" , likes: 0, dislikes :0},
+                  ];
+                  $scope.technology = technology;
+            $scope.increaseLike = function (technology) {
+                  technology.likes++;
+            };
+             $scope.increaseDislike = function (technology) {
+                  technology.dislikes++;
+            };
+           });
+        </script>
+        
+        <center>
+        	<div ng-app="app">
+            <div ng-controller="ctrl">
+            	<table>
+            		<thead>
+                              <th>Name</th> 
+                              <th>Likes</th>
+                              <th>Dislikes</th>          
+                              <th>Button</th>
+                        </thead>
+            		<tbody>
+                              <tr ng-repeat="tech in technology">
+                                    <td>{{tech.name}}</td>
+                                    <td>{{tech.likes}}</td>
+                                    <td>{{tech.dislikes}}</td>
+                                    <td>
+                                          <input type="submit" value="Like" ng-click="increaseLike(tech)">
+                                           <input type="submit" value="Dislike" ng-click="increaseDislike(tech)">
+
+                                    </td>
+                              </tr>          
+                        </tbody>
+            		
+            	</table>
+        </center>
+        
+
+	</body>
+	</html>

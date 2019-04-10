@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+  </body>
+  </!DOCTYPE html>
+  <html>
+  <head>
+    <title>ANGULARJS</title>
+      <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/list.js"></script>
+
+<style type="text/css">
+ td{
+    border : 1px solid black;
+    padding: 5px;
+  }
+  th{
+    border : 1px solid black;
+    padding: 5px;
+    text-align: left;
+    cursor: pointer;;
+  }
+
+</style>
+
+  </head>
+  <body>
+   <script>
+           var ma = angular.module("app", []);
+          ma.controller("ctrl", function ($scope) {
+                  var employees =[
+                        {name : "Sam Smith" , dob: new Date("November 25, 1994"), gender: "Men", salary:25000.759},
+                        {name : "Samulel Eto" , dob: new Date("November 25, 1994"), gender: "Men", salary:30000},
+                        {name : "Akber Khan" , dob: new Date("April 25, 1994"), gender: "Female", salary:35000},
+                        {name : "Jahanara Imam", dob: new Date("June 25, 1993"), gender: "Female", salary:4500},
+                        {name : "Jummun Sarkar" , dob: new Date("August 25, 1996"), gender: "Female", salary:55000}
+                  ];
+                  $scope.empl = employees;
+                 
+           });
+        </script>
+        <center>
+           
+          <div ng-app="app">
+            <div ng-controller="ctrl">
+              <input type="text" name="" ng-model="searchText" placeholder="Search Anything From Table">
+             <table>
+                       <thead>
+                          <td>NAME</td>
+                          <td>DATE OF BIRTH</td>
+                            <td>GENDER</td>
+                             <td>SALARY (NUMBER)</td>
+                              <td>SALARY (CURRENC)</td>  
+                        </thead>
+                <tbody>
+                              <tr ng-repeat="emp in empl | filter: searchText" style="text-align: center;;">
+                                    <td>{{emp.name}}</td>
+                                    <td>{{emp.dob | date : "dd/mm/yyyy"}}</td>
+                                    <td>{{emp.gender}}</td>
+                                    <td>
+                                          {{emp.salary | number:1 }}
+                                    </td>
+                                    <td> 
+                                          {{emp.salary | currency : "#" : 1}}
+                                    </td>
+                              </tr>          
+                        </tbody>
+                
+              </table>
+             </div>
+              
+           </div>
+        </center>
+        
+
+  </body>
+  </html>

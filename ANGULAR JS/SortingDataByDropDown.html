@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+	</body>
+	</!DOCTYPE html>
+	<html>
+	<head>
+		<title>ANGULARJS</title>
+		  <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/list.js"></script>
+	</head>
+	<body>
+	 <script>
+           var ma = angular.module("app", []);
+          ma.controller("ctrl", function ($scope) {
+                  var employees =[
+                        {name : "Sam Smith" , dob: new Date("November 25, 1994"), gender: "male", salary:25000.759},
+                        {name : "Samulel Eto" , dob: new Date("November 25, 1994"), gender: "female", salary:30000},
+                        {name : "Akber Khan" , dob: new Date("April 25, 1994"), gender: "male", salary:35000},
+                        {name : "Jahanara Imam", dob: new Date("June 25, 1993"), gender: "female", salary:4500},
+                        {name : "Jummun Sarkar" , dob: new Date("August 25, 1996"), gender: "male", salary:55000}
+                  ];
+                  $scope.empl = employees;
+                 
+                  
+            
+           });
+        </script>
+        <center>
+           
+        	<div ng-app="app">
+            <div ng-controller="ctrl">
+              Order By 
+              <select ng-model="sortColumn">
+                <option value="name">Name Ascending</option>
+                <option value="gender">Gender Ascending</option>
+                <option value="dob">Date Of Birth Ascending</option>
+                <option value="-salary">Salary Descending Order</option>
+                <option value="+salary">Salary Ascending Order</option>
+              </select>
+             <table>
+                <thead>
+                              <th>NAME</th>
+                              <th>DATE OF BIRTH</th>
+                              <th>GENDER</th>          
+                              <th>SALARY (NUMBER)</th>
+                              <th>SALARY (CURRENCY)</th>
+                        </thead>
+                <tbody>
+                              <tr ng-repeat="emp in empl | orderBy : sortColumn" style="text-align: center;;">
+                                    <td>{{emp.name}}</td>
+                                    <td>{{emp.dob | date : "dd/mm/yyyy"}}</td>
+                                    <td>{{emp.gender | uppercase}}</td>
+                                    <td>
+                                          {{emp.salary | number:1 }}
+                                    </td>
+                                    <td> 
+                                          {{emp.salary | currency : "#" : 1}}
+                                    </td>
+                              </tr>          
+                        </tbody>
+                
+              </table>
+             </div>
+              
+           </div>
+        </center>
+        
+
+	</body>
+	</html>
