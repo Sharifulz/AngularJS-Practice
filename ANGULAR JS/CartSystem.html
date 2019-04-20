@@ -1,0 +1,72 @@
+
+  </!DOCTYPE html>
+  <html>
+  <head>
+    <title>ANGULARJS</title>
+    <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/list.js"></script>
+  </head>
+  <body>
+   <script>
+            var ma = angular.module("app", []);
+            ma.controller("ctrl", function ($scope) {
+                  var product = [
+                        {id: 1 , name : "SOAP", price : 100},
+                        {id: 2 , name : "MILK", price : 200},
+                        {id: 3 , name : "SALT", price : 300},
+                  ];
+                  $scope.pro = product;
+                  var sum = 0;
+                  var v=0;
+                  var count=0;
+                 var array = [];
+                 var ar=0;
+            $scope.show = function () {
+                  v= parseInt($scope.drop);
+                  sum = sum + v;
+                  count++;
+                  array[ar] = $scope.drop;
+                  console.log(array[ar]);
+                  ar++;
+                  $scope.price = sum;
+                  $scope.pqty = count;
+                 
+            };
+            var q="";
+            $scope.delData = function(){
+              
+            }
+            $scope.bought = array;
+            });
+        </script>
+        <center>
+          <div ng-app="app">
+            <div ng-controller="ctrl">
+            <select ng-model="drop">
+                  <option ng-repeat="n in pro" value="{{n.price}} {{n.name}}">{{n.name}}</option>
+            </select>
+
+            <input type="submit" name="" value="ADD" ng-click="show()">
+            <br/>
+            Price : {{drop}}
+            <br/>
+            You have selected _ {{pqty}} product;
+            <br/>
+            Total : {{price}}
+            <br/>
+            <hr/>
+<select ng-model="buyData">
+      <option ng-repeat="s in bought" value="{{s}}">{{s}}</option>      
+</select>
+<input type="submit" value="MINUS" ng-onclick="delData()">
+<table>
+      <tr ng-repeat="t in bought">
+            <td>{{t}}</td>
+      </tr>
+</table>
+        </center>
+        
+        
+</div>
+  </body>
+  </html>

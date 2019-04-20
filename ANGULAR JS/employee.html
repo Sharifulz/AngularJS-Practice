@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <head>
+        <title>PAGE A</title>
+
+    </head>
+    <body>
+    <center>
+    	 <h2>Store value Using localStorage</h2>
+	   
+	   <form>
+	   <input type="text" id="name" name="name">
+	   <input type="text" id="price" name="price">
+	   <a href="" onClick="logs()">Submit</a>
+	   </form>
+    </center>
+    <script>
+		function logs(){
+		var p = document.getElementById('name').value;
+		var q = document.getElementById('price').value;
+		localStorage.setItem("n", p);
+		localStorage.setItem("pr", q);
+		alert("SUBMITTED");
+		}
+		</script>
+    </body>
+</html>

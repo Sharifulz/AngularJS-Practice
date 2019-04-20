@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ANGULARJS</title>
+    <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/angular-route.min.js"></script>
+
+    <style type="text/css">
+        td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        th {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+            cursor: pointer;
+            ;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <script>
+        var ma = angular.module("app", []);
+          ma.controller("ctrl", function ($scope) { 
+                $scope.isVisible = false;
+              $scope.showAndHide = function(value){
+                  $scope.isVisible = value == "show";
+              }
+           });
+        </script>
+    <center>
+
+        <div ng-app="app">
+            <div ng-controller="ctrl">
+                <input type="radio" name="isVisible" ng-click="showAndHide('show')" />Show 
+                <input type="radio" name="isVisible" ng-click="showAndHide('hide')" /> Hides
+                
+                <div ng-show="isVisible">
+                    <h1>This is the text</h1>
+                </div>
+                
+                
+            </div>
+
+        </div>
+    </center>
+
+
+</body>
+
+</html>

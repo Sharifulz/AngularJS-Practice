@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <script src="js/angular.js" type="text/javascript"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+            
+	</head>
+	<body>
+	
+        
+        <center>
+        	<div ng-app="app">
+            <div ng-controller="ctrl">
+            <center>
+                
+                <input type="text" ng-model="test1">
+                <input type="submit" value="Submit" ng-click="tt()">
+                
+                {{abc}}
+            </center>
+            
+            	<center>
+                    <select ng-model="userType">
+                        <option value="">Select User Type</option>
+                        <option value="admin">I am an Admin</option>
+                        <option value="User">I am a User</option>
+                    </select>
+                    
+                    
+                    <div ng-if="userType=='admin'">
+                    <form>
+                        
+                        <input type="text" placeholder="Enter Admin Name">
+                        
+                        </form>
+                    </div>
+                    
+                    </center>
+             <div ng-if="userType=='User'">
+                    <form>
+                        <input type="text" ng-model="testd">
+                <input type="submit" value="Submit" ng-click="ttb()">
+                    </form>
+                        
+                         
+                
+                {{abcd}}
+                        </div>
+   
+                </div>
+            </div>
+        </center>
+        
+<script>
+            var ma = angular.module("app", []);
+            ma.controller("ctrl", function ($scope) {
+                
+                 $scope.tt = function(){
+                     $scope.abc=$scope.test1;
+                     console.log($scope.abc);
+                   
+                 } 
+                 
+                  $scope.ttb = function(){
+                     $scope.abcd=$scope.testd;
+                    console.log($scope.abcd);
+                 } 
+             
+           });
+        </script>
+	</body>
+	</html>

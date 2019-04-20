@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ANGULARJS</title>
+    <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/list.js"></script>
+
+    <style type="text/css">
+  
+    </style>
+
+</head>
+
+<body>
+    <script>
+        var ma = angular.module("app", []);
+          ma.controller("ctrl", function ($scope) { 
+                $scope.isVisible = false;
+                $scope.isVisible2 = false;
+              
+              $scope.showAndHide = function(value){
+                  $scope.isVisible = value == "show";
+                  $scope.isVisible2 = value == "hide";
+              }
+              $scope.showAdmin = function(){
+                  $scope.adminN = $scope.adminName;
+              }
+              $scope.showUser = function(){
+                  $scope.userN = $scope.userName;
+              }
+           });
+        </script>
+    <center>
+
+        <div ng-app="app">
+            <div ng-controller="ctrl">
+                <input type="radio" name="isVisible" ng-click="showAndHide('show')" />Admin 
+                <input type="radio" name="isVisible" ng-click="showAndHide('hide')" /> User
+                
+                <div ng-show="isVisible">
+                         <form>
+                         <center>Admin Form</center>
+                       <table border="0px">
+                           <tr>
+                               <td>Username</td>
+                               <td><input type="text" placeholder="Enter Username" ng-model="adminName"></td>
+                           </tr>
+                           <tr>
+                               <td>Password</td>
+                               <td><input type="password" placeholder="Enter Password"></td>
+                           </tr>
+                           <tr>
+                               <td></td>
+                               <td> <input type="submit" value="Login Admin" ng-click="showAdmin()"></td>
+                           </tr>
+                       </table>
+                       <h3>Welcome {{adminN}}</h3>     
+                    </form>
+                </div>
+                <div ng-show="isVisible2">
+                    
+                     <form>
+                      <center>User Form</center>
+                       <table border="0px">
+                           <tr>
+                               <td>Username</td>
+                               <td><input type="text" placeholder="Enter Username" ng-model="userName"></td>
+                           </tr>
+                           <tr>
+                               <td>Password</td>
+                               <td><input type="password" placeholder="Enter Password"></td>
+                           </tr>
+                           <tr>
+                               <td></td>
+                               <td> <input type="submit" value="Login User" ng-click="showUser()"></td>
+                           </tr>
+                       </table>  
+                        <h3>Welcome {{userN}}</h3>      
+                    </form>
+                </div>
+                
+            </div>
+
+        </div>
+    </center>
+
+
+</body>
+
+</html>
