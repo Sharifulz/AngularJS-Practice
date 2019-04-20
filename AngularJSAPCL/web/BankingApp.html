@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title>ANGULARJS</title>
+        <script type="text/javascript" src="ng/angular.js"></script>
+        <!-- **************************SCRIPT *****************-->
+        <!-- **************************SCRIPT *****************-->
+
+        <script>
+            var ma = angular.module("app", []);
+            ma.controller("ctrl", function ($scope) {
+                var system = [
+                   "DEBIT","CREDIT" 
+                ];
+                $scope.sys = system;
+                $scope.aa = $scope.a;
+                $scope.bb = $scope.b;
+            });
+        </script>
+
+        <!-- **************************SCRIPT *****************-->
+        <!-- **************************SCRIPT *****************-->
+
+
+    </head>
+    <body>
+
+
+        <div ng-controller="ctrl">
+
+            <select ng-model="drop">
+                <option value="">CHOOSE PAYMENT PROCESS</option>
+                <option ng-repeat="n in sys" value="{{n}}">{{n}}</option>
+            </select>
+           <br/>
+            <hr/>
+            <div ng-if="drop=='DEBIT'">
+                <input type="text" placeholder="ENTER ID"/><br/><br/>
+                <input type="text" placeholder="ENTER NAME" ng-model="b"/><br/><br/>
+                <a href="FromDebit.html">Submit</a>
+                {{a}}
+                {{b}}
+            </div>
+            <div ng-if="drop=='CREDIT'">
+                <input type="text" placeholder="ENTER ID"/><br/><br/>
+                <input type="text" placeholder="ENTER NUMBER"/><br/><br/>
+                <input type="text" placeholder="ENTER AMOUNT"/><br/><br/>
+                 <a href="FromCredit.html">Submit</a>
+            </div>
+        </div>
+
+    </body>
+</html>

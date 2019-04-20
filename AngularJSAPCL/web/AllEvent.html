@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ANGULARJS</title>
+        <script type="text/javascript" src="ng/angular.js"></script>
+        <style>
+            .a1{
+                color:red;
+            }
+            
+            .a2{
+                color:blue;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            var ma = angular.module("app", []);
+            ma.controller("ctrl", function ($scope) {
+                $scope.b ="";
+               
+                $scope.change1 = function (){
+                    $scope.a1='a1';
+                }
+                $scope.change2 = function (){
+                    $scope.a1='a2';
+                }
+                
+                $scope.keyP = function (){
+                    $scope.b= "Hellow";
+                }
+                $scope.keyU = function (){
+                    $scope.b= "";
+                }
+                
+                $scope.fun1 = function (){
+                    $scope.col1 ="red";
+                }
+                $scope.fun2= function(){
+                    $scope.col1 ="blue";
+                }
+                
+    });
+</script>
+        <div ng-app="app">
+            <div ng-controller="ctrl">
+                
+                <!-- Mouse Effect On Text -->
+                
+                <input type="text" style="background:{{col1}}" ng-mouseover="fun1()"  ng-mouseleave="fun2()">
+                <h1 ng-class="a1" ng-mouseover="change1()" ng-mouseleave="change2()">This text will changes the color on mouse over.</h1>
+
+                <!-- Keyboard Effect Input Field -->
+                
+                <input type="text" ng-keypress="keyP()" ng-keydown="keyU()" ng-keyup="keyP()" placeholder="Next Textbox will show hello on clicking this box">
+                <h2>{{b}}</h2>
+                
+                
+                <br/>
+                <hr/>
+               
+            
+                
+            </div>
+        </div>
+
+
+    </body>
+</html>

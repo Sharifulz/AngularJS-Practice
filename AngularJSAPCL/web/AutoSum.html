@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="ng/angular.js" type="text/javascript"></script>
+
+    </head>
+    <body>
+        <script>
+            var ma = angular.module("app", []);
+            
+            ma.controller("ctrl", function ($scope) {
+            $scope.add = function () {
+             var a = parseInt($scope.num1);
+             var b = parseInt($scope.num2);
+             if (a<5) {
+    $scope.msg="negative dta";
+}
+            $scope.result1 = a + b;
+            };
+           
+            $scope.sub = function () {
+            var a = parseInt($scope.num1);
+            var b = parseInt($scope.num2);
+            $scope.result1 = a - b;
+            };
+            });
+            ma.controller("ctrl2", function ($scope) {
+            $scope.times = function () {
+            var a = parseInt($scope.num1);
+            var b = parseInt($scope.num2);
+            $scope.result2 = a * b;
+            };
+            $scope.div = function () {
+            var a = parseInt($scope.num1);
+            var b = parseInt($scope.num2);
+            $scope.result2 = a / b;
+            };
+            });
+            ma.controller("ctrl3", function ($scope) {
+            $scope.drop = function () {
+            var b = $scope.boxv;
+            $scope.result3 = b;
+            };
+            });
+            ma.controller("ctrl4", function ($scope) {
+            $scope.chkbox = function () {
+            var c = $scope.sk1;
+            var d = $scope.sk2;
+            $scope.result4 = c;
+            $scope.result5 = d;
+            };
+            });
+            
+             ma.controller("ctrl5", function ($scope) {
+            $scope.genbox = function () {
+            var e = $scope.rd1;
+            $scope.result6 = e;
+            };
+            });
+        </script>
+        <div ng-app="app">
+            <div ng-controller="ctrl">
+                Product One :  <input type="text" ng-model="num1"/> {{msg}}<br/>
+                Product Two :  <input type="text" ng-model="num2"/> <br/>
+                <input type="submit" value="PLUS" ng-click="add()"/>
+                <input type="submit" value="MINUS" ng-click="sub()"/><br/>
+                RESULT is :  {{result1}} <br/>
+
+            </div>
+            <hr/>
+
+            <div ng-controller="ctrl2">
+                Product One :  <input type="text" ng-model="num1"/> <br/>
+                Product Two :  <input type="text" ng-model="num2"/> <br/>
+                <input type="submit" value="MULTIPLY" ng-click="times()"/>
+                <input type="submit" value="DIVIDE" ng-click="div()"/><br/>
+                RESULT is :  {{result2}} <br/>
+            </div>
+
+            <div ng-controller="ctrl3">
+                <select ng-model="boxv">              
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                </select>             
+                <input type="submit" value="SHOW" ng-click="drop()"/><br/>
+                RESULT is :  {{result3}} <br/>
+            </div>
+
+            <div ng-controller="ctrl4">
+                <input type="checkbox" ng-model="sk1" value="Html" ng-init="HTML">HTML           
+                <input type="checkbox" ng-model="sk2" value="Css" ng-init="CSS"> CSS    
+                <input type="submit" value="SHOW CHECKBOX" ng-click="chkbox()"/><br/>
+                HTML SELECTED? :  {{result4}} <br/>
+                CSS SELECTED? :  {{result5}} <br/>
+            </div>
+
+            <div ng-controller="ctrl5">
+                <input type="radio" ng-model="rd1" value="MALE">MALE           
+                <input type="radio" ng-model="rd1" value="FEMALE"> FEMALE    
+                <input type="submit" value="SHOW RADIO VALUE" ng-click="genbox()"/><br/>
+                GENDER :  {{result6}} <br/>
+            </div>
+        </div>
+    </body>
+</html>

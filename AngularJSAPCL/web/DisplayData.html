@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ANGULARJS</title>
+        <script type="text/javascript" src="ng/angular.js"></script>
+    </head>
+    <body>
+        <script>
+            var ma = angular.module("app", []);
+            ma.controller("ctrl", function ($scope) {
+                var product = [
+                    {id: 1, name: "SOAP", price: 100},
+                    {id: 2, name: "MILK", price: 200},
+                    {id: 3, name: "SALT", price: 300},
+                    {id: 4, name: "SUGAR", price: 250},
+                    {id: 5, name: "SOYABIN", price: 450},
+                    {id: 6, name: "FLOUR", price: 550},
+                    {id: 7, name: "RICE", price: 440},
+                    {id: 8, name: "JUICE", price: 440},
+                    {id: 9, name: "SNACKS", price: 140},
+                    {id: 10, name: "CHIPS", price: 120},
+                     {id: 11, name: "MILK", price: 350}
+                ];
+                $scope.pro = product;
+                $scope.lim = 5;
+
+            });
+        </script>
+    <center>
+        <div ng-app="app">
+            <div ng-controller="ctrl">
+               Search Item  <input type="text" ng-model="searchText"><br/>
+<br/>               Limit Item  <input type="number" ng-model="lim" min="1" max="10">
+               
+<br/>
+<br/>
+<table
+   border="1" style="width: 450px; text-align: center;">
+                    <tr>
+                        <td style="color: red">ID</td>
+                        <td style="color: red">NAME</td>
+                        <td style="color: red">PRICE</td>
+                    </tr>
+                    <tr ng-repeat="n in pro | limitTo: lim | orderBy : 'price' | filter : searchText">
+                        <td>{{n.id}}</td>
+                        <td>{{n.name}}</td>
+                        <td>{{n.price | currency:" &#2547 "}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </center>
+            </body>
+            </html>

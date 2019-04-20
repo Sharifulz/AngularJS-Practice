@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ANGULARJS</title>
+        <script type="text/javascript" src="ng/angular.js"></script>
+    </head>
+    <body>
+        <script>
+            var ma = angular.module("app", []);
+            ma.controller("ctrl", function ($scope) {
+                var product = [
+                    {id: 1, name: "SOAP", price: 100},
+                    {id: 2, name: "MILK", price: 200},
+                    {id: 3, name: "SALT", price: 300},
+                ];
+                $scope.pro = product;
+    });
+        </script>
+
+        <div ng-app="app">
+            <div ng-controller="ctrl">
+                <input type="radio" ng-model="hideBox1" name="rd1"> Hide The Box1
+                <input type="radio" ng-model="hideBox2" name="rd1"> Hide The Box2
+                <input type="submit" ng-show="hideBox1"/>
+                <input type="submit" ng-show="hideBox2"/>
+                <br/>
+                <hr/>
+               
+            
+                
+            </div>
+        </div>
+
+
+    </body>
+</html>

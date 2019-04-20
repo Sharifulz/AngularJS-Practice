@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+    <head>
+        <meta charset="UTF-8">
+        <title>JavaScript Validation</title>
+
+        <link rel="shortcut icon" type="image/png" href="img/check.png">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+
+        <script src="js/popper.min.js" type="text/javascript"></script>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootbox.min.js"></script>
+        <script type="text/javascript" src="js/myform.js"></script>
+        <script src="ng/angular.js" type="text/javascript"></script>
+
+        <script>
+            var ma = angular.module("app", []);
+            ma.controller("ctrl", function ($scope) {
+                var system = [
+                    "DEBIT", "CREDIT"
+                ];
+                $scope.sys = system;
+                $scope.showAdmin = function(u){
+                    $scope.userN = u;
+                }
+                
+            });
+        </script>
+    </head>
+    <body ng-controller="ctrl">
+
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <select ng-model="drop" class="form-control">
+                    <option value="">Choose Payment Method</option>
+                    <option ng-repeat="n in sys" value="{{n}}">{{n}}</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
+        
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-md-4  col-sm-4"></div>
+            <div class="col-md-4 col-sm-4">
+                <div ng-if="drop=='DEBIT'">
+                    <input type="text" class="form-control" placeholder="ENTER ID"/><br/><br/>
+                    <input type="text" class="form-control" placeholder="ENTER NAME" ng-model="uname"/><br/><br/>
+                    
+                <input type="submit" class="form-control btn btn-info" ng-click="showAdmin(uname)" value="SHOW INFO"/><br/><br/>
+                <a href="FromDebit.html" class="btn btn-primary form-control">Submit</a>
+                
+                <span class="text-danger">{{userN}}</span>
+                </div>
+                
+                <div ng-if="drop=='CREDIT'">
+                <input type="text" class="form-control" placeholder="ENTER ID"/><br/><br/>
+                <input type="text" class="form-control" placeholder="ENTER NUMBER"/><br/><br/>
+                <input type="text" class="form-control" placeholder="ENTER AMOUNT"/><br/><br/>
+                 <a href="FromCredit.html" class="btn btn-warning form-control">Submit</a>
+            </div>
+            </div>
+            <div class="col-md-4  col-sm-4"></div>
+        </div>
+
+    </body>
+</html>

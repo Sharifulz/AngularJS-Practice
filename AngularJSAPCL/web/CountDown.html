@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ANGULARJS</title>
+        <script type="text/javascript" src="ng/angular.js"></script>
+        <script type="text/javascript" src="js/list.js"></script>
+    </head>
+    <body>
+        <script>
+            var ma = angular.module("app", []);
+            ma.controller("ctrl", function ($scope, $timeout) {
+                $scope.msg = "This text will be change in a minutes";
+                $scope.count = "5";
+                
+                // Js code for text interval
+                $timeout(function () {
+                    $scope.msg = "Hello From The Other Side";
+
+                }, 5000);
+                
+                
+                // JS code for Counter
+                 $timeout(function () {
+                    $scope.count = " 4 ";
+                }, 1000);
+                $timeout(function () {
+                    $scope.count = " 3 ";
+                }, 2000);
+                $timeout(function () {
+                    $scope.count = " 2 ";
+                }, 3000);
+                $timeout(function () {
+                    $scope.count = " 1 ";
+                }, 4000);
+                $timeout(function () {
+                    $scope.count = " (NOW) ";
+                }, 5000);
+            });
+        </script>
+    <center>
+        <div ng-app="app">
+            <div ng-controller="ctrl">               
+                <h1>The following message will change in <span>{{count}}</span> minutes.</h1>
+                <span>{{msg}}</span>
+            </div>
+        </div>
+    </center>
+</body>
+</html>

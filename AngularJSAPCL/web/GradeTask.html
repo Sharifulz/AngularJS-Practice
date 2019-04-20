@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="ng/angular.js" type="text/javascript"></script>
+        <script>
+            var mb = angular.module("myapp", []);
+            mb.controller("ctrl1", function ($scope) {
+                $scope.calc = function () {
+                    var bangla = parseInt($scope.bang);
+                    var english = parseInt($scope.eng);
+                    var maths = parseInt($scope.math);
+                    var total = bangla + english + maths;
+                    var avg = Number(total / 3);
+
+                    var gpa;
+                    var grd;
+                    if (avg > 40) {
+                        grd = "A+";
+                        gpa = 5.00;
+                    }
+                    $scope.grds = grd;
+                    $scope.gpas = gpa;
+                    $scope.ttl = total;
+                    $scope.average = avg;
+
+                };
+            });
+
+
+
+        </script>
+    </head>
+
+
+    <body>
+        <div>GRADE CALCULATOR</div>
+        <div ng-app="myapp">
+            <div ng-controller="ctrl1">
+                <table>
+                    <tr>
+                        <td>BANGLA</td>
+                        <td><input type="text" ng-model="bang"></td>
+                    </tr>
+                    <tr>
+                        <td>ENGLISH</td>
+                        <td><input type="text" ng-model="eng"></td>
+                    </tr>
+                    <tr>
+                        <td>MATHEMATICS</td>
+                        <td><input type="text" ng-model="math"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" ng-click="calc()"></td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <td>TOTAL</td>
+                        <td>{{ttl}}</td>
+                    </tr>
+                    <tr>
+                        <td>AVERAGE</td>
+                        <td>{{average}}</td>
+                    </tr>
+                    <tr>
+                        <td>GPA</td>
+                        <td>{{gpas}}</td>
+                    </tr>
+                    <tr>
+                        <td>GRADE</td>
+                        <td>{{grds}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </body>
+</html>

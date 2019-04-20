@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="ng/angular.js" type="text/javascript"></script>
+
+    </head>
+    <body>
+        <script>
+            var ma = angular.module("app", []);
+
+            ma.controller("ctrl", function ($scope) {
+                var office = [
+                    {dept:"marketing", employee : 10},
+                    {dept:"management", employee : 15},
+                    {dept:"finance", employee : 20}
+                ];
+                
+                $scope.office = office;         
+            });
+        </script>
+        <div ng-app="app">
+            <div ng-controller="ctrl">
+                <table>
+                    <thead>
+                    <th>FIRST NAME</th>
+                    <th>LAST NAME</th>
+                    <th>SALARY</th>
+                    </thead>
+                    
+                    <tr >
+                        <td>
+                            <select ng-model="drop">
+                                <option ng-repeat="a in office">{{a.dept | uppercase}}</option>
+                            </select>
+                        </td>
+                        <td><input type="submit" value="SHOW" ng-click="showInfo()"/></td>
+                    </tr>
+                    <tr>
+                        <td ng-repeat="a in office">{{a.dept}}</td>
+                       
+                    </tr>
+                    
+                </table>
+
+            </div>
+        </div>
+    </body>
+</html>

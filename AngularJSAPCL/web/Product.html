@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="ng/angular.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div ng-app="">
+            Product Price :  <input type="number" ng-model="price"/> <br/>
+            Product Two :  <input type="number" ng-model="qty"/> <br/>
+            Total :  {{price+qty}} <br/>
+            Discount :  <input type="number" ng-model="dis"/>  <br/>  
+            Pay After Discount : {{(price+qty)-(price+qty)*dis/100}}<br/>
+        </div>
+      
+    </body>
+</html>

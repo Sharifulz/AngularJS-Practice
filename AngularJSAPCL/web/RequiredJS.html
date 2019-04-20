@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title>ANGULARJS</title>
+        <script type="text/javascript" src="ng/angular.js"></script>
+        <!-- **************************SCRIPT *****************-->
+        <!-- **************************SCRIPT *****************-->
+
+        <script>
+            var ma = angular.module("app", []);
+            ma.controller("ctrl", function ($scope) {
+               $scope.res = function (){
+                   $scope.fname="";
+                   $scope.email="";
+               }
+                $scope.show = function (){
+                   $scope.username=$scope.fname;
+                   $scope.usermail=$scope.email;
+               }
+            });
+        </script>
+
+        <!-- **************************SCRIPT *****************-->
+        <!-- **************************SCRIPT *****************-->
+
+
+    </head>
+    <body>
+        <div ng-controller="ctrl">
+            <center>
+            <form name="studentForm" novalidate="">
+               
+            <table>
+                <tr>
+                    <td>Enter First Name</td>
+                    <td>
+                        <input type="text" name="name" ng-model="fname" placeholder="Enter Name" required>
+                        <span style="color: red;">
+                            <span ng-show="studentForm.name.$error.required">*</span>
+                        </span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Enter First Email</td>
+                    <td>
+                        <input type="email" name="mail" ng-model="email" placeholder="Enter Email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,3}$/" required>
+                        <span style="color: red;">
+                            <span ng-show="studentForm.mail.$error.pattern">Email Invalid</span>
+                            <span ng-show="studentForm.mail.$error.required">Email Required</span>
+                        </span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><input type="submit" ng-click="res()" value="CLEAR"></td>
+                    <td><input type="submit" value="SUBMIT" ng-click="show()" ng-disabled="studentForm.name.$invalid || studentForm.mail.$invalid"></td>
+                </tr>
+            </table>
+        </form>
+                <br/>
+                <br/>
+                <hr/>
+            <span>User Name {{username}}</span><br/>
+            <span>User Email {{usermail}}</span>
+            </center>
+        </div>
+       
+
+    </body>
+</html>

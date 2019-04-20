@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title>ANGULARJS</title>
+        <script type="text/javascript" src="ng/angular.js"></script>
+        <!-- **************************SCRIPT *****************-->
+        <!-- **************************SCRIPT *****************-->
+
+        <script>
+            var ma = angular.module("app", []);
+            ma.controller("ctrl", function ($scope) {
+                var product = [
+                    {id: 1, name: "Amina", salary: 100, age: 25, email:"abc@gmail.com"},
+                    {id: 2, name: "Maleka", salary: 200, age:26, email: "xyz@gmail.com"},
+                    {id: 3, name: "Sumaira", salary: 300, age:27, email: "pqr@gmail.com"}
+                ];
+                $scope.pro = product;
+            });
+        </script>
+
+        <!-- **************************SCRIPT *****************-->
+        <!-- **************************SCRIPT *****************-->
+
+
+    </head>
+    <body>
+
+
+        <div ng-controller="ctrl">
+
+            <select ng-model="drop">
+                <option value="">Choose Employee</option>
+                <option ng-repeat="n in pro" value="{{n.name}}">{{n.name}}</option>
+            </select>
+           <br/>Amina'">
+                <h3>Id : {{pro[0].id}}</h3>
+                <h3>Email :{{pro[0].email}}</h3>
+                <input type="text" placeholder="{{pro[0].salary}}"/>
+            </div>
+            <div ng-if="drop=='Sumaira'">
+                <h3>Name : {{pro[2].name}}</h3>
+                <h3>Email :{{pro[2].email}}</h3>
+            <hr/>
+            <div ng-if="drop=='Amina'">
+                <h3>Id : {{pro[0].id}}</h3>
+                <h3>Email :{{pro[0].email}}</h3>
+                <input type="text" placeholder="{{pro[0].salary}}"/>
+            </div>
+            <div ng-if="drop=='Sumaira'">
+                <h3>Name : {{pro[2].name}}</h3>
+                <h3>Email :{{pro[2].email}}</h3>
+                <h3>Email :{{pro[2].salary}}</h3>
+               
+            </div>
+            
+            <div ng-if="drop=='Maleka'">
+                <h3>Name : {{pro[1].name}}</h3>
+                <h3>Email :{{pro[1].email}}</h3>
+                <h3>Age :{{pro[1].age}}</h3>
+               
+            </div>
+            
+
+            
+
+        </div>
+
+    </body>
+</html>

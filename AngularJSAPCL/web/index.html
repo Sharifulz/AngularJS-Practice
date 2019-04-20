@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="ng/angular.js" type="text/javascript"></script>
+        <script>
+            var ma = angular.module("app", []);
+            ma.controller("ctrl1", function ($scope) {
+                var emp = [
+                    {id: 1, name: "Arif", email: "abc@gmail.com"},
+                    {id: 2, name: "Shaarif", email: "xyz@gmail.com"},
+                    {id: 3, name: "Tarif", email: "pqr@gmail.com"},
+                    {id: 4, name: "Masrif", email: "bbc@gmail.com"},
+                    {id: 5, name: "Maruf", email: "cnn@gmail.com"}
+                ];
+                $scope.empl = emp;
+            });
+        </script>
+        <style>
+            table{
+                width: 250px;
+            }
+            tr{
+                border: 1px solid black;
+            }
+            td{
+                border: 1px solid black;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div ng-app="app">
+            <div ng-controller="ctrl1">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>EMAIL</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="d in empl">
+                            <td>{{d.id}}</td>
+                            <td>{{d.name}}</td>
+                            <td>{{d.email}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
